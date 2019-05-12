@@ -5,12 +5,10 @@
 # all requirements get the latest version on installation.
 
 # Infrastructure
-Django >= 2.0.13,< 2.1  # pyup: <2.1 until 2018-11-02
+Django >= 2.1.6
 Pillow >= 6.0.0
-#for MySQL: MySQL-python >= 1.2.5
 psycopg2 >= 2.8.1
-#for memcached: python-memcached >= 1.59
-raven >= 6.10.0
+python-memcached >= 1.59
 uWSGI >= 2.0.18
 WsgiUnproxy >= 1.0
 
@@ -30,9 +28,13 @@ fluentcms-pager >= 2.0
 fluentcms-teaser >= 1.1.2
 
 # Support libs
+Collectfast
+argon2-cffi
 brotlipy >= 0.7.0
+django-allauth
 django-admin-tools >= 0.8.1
 django-analytical >= 2.5.0
+django-anymail
 django-any-imagefield >= 1.0
 django-any-urlfield >= 2.6.1
 django-axes >= 4.5.4
@@ -42,13 +44,17 @@ django-contrib-comments >= 1.9.1
 django-crispy-forms >= 1.7.2
 django-environ >= 0.4.5
 django-filebrowser-no-grappelli >= 3.7.8
+django-foundation-formtags
 django-healthchecks >= 1.4.2
+django-libsass
+django-model-utils
+django-redis >= 4.10.0
+django-storages
 django-mptt >= 0.9.1
 django-parler >= 1.9.2
 django-phonenumber-field >= 2.3.1
 django-polymorphic >= 2.0.3
 django-polymorphic-tree >= 1.5
-django-redis >= 4.10.0
 django-slug-preview >= 1.0.4
 django-staff-toolbar >= 1.2
 django-tag-parser >= 3.1
@@ -65,6 +71,7 @@ redis >= 3.2.1
 smartypants >= 2.0.1
 sorl-thumbnail >= 12.5.0
 whitenoise >= 4.1.2
+sentry-sdk
 
 # Installed dependencies
 django-template-analyzer >= 1.6.1
