@@ -5,12 +5,10 @@
 # all requirements get the latest version on installation.
 
 # Infrastructure
-Django >= 2.0.13,< 2.1  # pyup: <2.1 until 2018-11-02
+Django >= 2.1.6  # pyup: <2.1 until 2018-11-02
 Pillow >= 6.0.0
-#for MySQL: MySQL-python >= 1.2.5
 psycopg2 >= 2.8.1
-#for memcached: python-memcached >= 1.59
-raven >= 6.10.0
+python-memcached >= 1.59
 uWSGI >= 2.0.18
 WsgiUnproxy >= 1.0
 
