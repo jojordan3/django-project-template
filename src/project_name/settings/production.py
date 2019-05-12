@@ -9,10 +9,8 @@ COMPRESS_ENABLED = env.bool('COMPRESS_ENABLED', not DEBUG)
 SESSION_COOKIE_SECURE = env.bool('SESSION_COOKIE_SECURE', not DEBUG)
 CSRF_COOKIE_SECURE = env.bool('CSRF_COOKIE_SECURE', not DEBUG)
 
-# Raven is only enabled in production to avoid warnings in development
 INSTALLED_APPS += (
-    'raven.contrib.django.raven_compat',
-    #'gunicorn',
+    'gunicorn',
 )
 
 # Keep templates in memory
