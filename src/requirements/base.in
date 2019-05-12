@@ -5,7 +5,7 @@
 # all requirements get the latest version on installation.
 
 # Infrastructure
-Django >= 2.1.6  # pyup: <2.1 until 2018-11-02
+Django >= 2.1.6
 Pillow >= 6.0.0
 psycopg2 >= 2.8.1
 python-memcached >= 1.59
@@ -15,20 +15,30 @@ WsgiUnproxy >= 1.0
 # CMS libraries
 django-fluent-dashboard >= 1.0
 
+
 # Support libs
+Collectfast
+argon2-cffi
 brotlipy >= 0.7.0
+django-allauth
 django-admin-tools >= 0.8.1
 django-analytical >= 2.5.0
+django-anymail
 django-axes >= 4.5.4
 django-compressor >= 2.2
-django-crispy-forms >= 1.7.2
+crispy-forms-foundation
 django-environ >= 0.4.5
 django-filebrowser-no-grappelli >= 3.7.8
+django-foundation-formtags
 django-healthchecks >= 1.4.2
+django-libsass
+django-model-utils
 django-redis >= 4.10.0
+django-storages
 django-webmaster-verification >= 0.3.0
 netaddr >= 0.7.19
 pytz >= 2018.9
 redis >= 3.2.1
 sorl-thumbnail >= 12.5.0
+sentry-sdk
 whitenoise >= 4.1.2
