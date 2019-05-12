@@ -4,11 +4,13 @@
 #
 #    pip-compile -v --upgrade --output-file requirements/base.txt requirements/base.in
 #
+argon2-cffi
 brotlipy==0.7.0
 certifi==2019.3.9         # via requests
 cffi==1.12.2              # via brotlipy
 chardet==3.0.4            # via requests
 django-admin-tools==0.8.1
+django-allauth
 django-analytical==2.5.0
 django-appconf==1.0.3     # via django-axes, django-compressor
 django-axes==4.5.4
@@ -16,9 +18,12 @@ django-compressor==2.2
 django-crispy-forms==1.7.2
 django-environ==0.4.5
 django-filebrowser-no-grappelli==3.7.8
+django-foundation-formtags
 django-fluent-dashboard==1.0
 django-healthchecks==1.4.2
 django-ipware==2.1.0      # via django-axes
+django-libsass
+django-model-utils
 django-redis==4.10.0
 django-webmaster-verification==0.3.0
 django==2.0.13
