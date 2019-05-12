@@ -20,7 +20,6 @@ COMPRESS_STORAGE = 'compressor.storage.GzipCompressorFileStorage'  # generate .g
 try:
     with open(SRC_DIR + '/.docker-git-version') as f:
         GIT_VERSION = f.read().strip()
-    RAVEN_CONFIG['release'] = GIT_VERSION
 except IOError:
     pass
 
