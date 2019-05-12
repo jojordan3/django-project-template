@@ -5,7 +5,6 @@ import logging
 import os
 
 import environ
-import raven.exceptions
 
 env = environ.Env()
 
@@ -116,8 +115,6 @@ STATICFILES_FINDERS = (
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MIDDLEWARE = (
-    'raven.contrib.django.middleware.SentryLogMiddleware',  # make 'request' available on all logs.
-    'raven.contrib.django.middleware.Sentry404CatchMiddleware',  # on 404, report to sentry.
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -170,31 +167,19 @@ DATABASES = {
 
 locals().update(env.email_url(default='smtp://'))
 
-RAVEN_CONFIG = {
-    'dsn': env.str('SENTRY_DSN', default=''),
-}
-
-try:
-    GIT_VERSION = raven.fetch_git_sha('..')
-    RAVEN_CONFIG['release'] = GIT_VERSION
-except raven.exceptions.InvalidGitRepository:
-    pass
-
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
-    'formatters': {
-        'verbose': {
-            'format': u'%(levelname)s: %(asctime)s %(process)d %(thread)d %(module)s: %(message)s',
-        },
-        'simple': {
-            'format': u'%(levelname)s:\t%(message)s',
-        },
-    },
     'filters': {
         'require_debug_false': {
-            '()': 'django.utils.log.RequireDebugFalse',
+            '()': 'django.utils.log.RequireDebugFalse'
         }
+    },
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s %(module)s '
+                      '%(process)d %(thread)d %(message)s'
+        },
     },
     'handlers': {
         'mail_admins': {
@@ -202,31 +187,23 @@ LOGGING = {
             'filters': ['require_debug_false'],
             'class': 'django.utils.log.AdminEmailHandler'
         },
-        'sentry': {
-            'level': 'WARNING',
-            'class': 'raven.contrib.django.handlers.SentryHandler',
-        },
         'console': {
             'level': 'DEBUG',
             'class': 'logging.StreamHandler',
-            'formatter': 'verbose'
+            'formatter': 'verbose',
         },
     },
     'loggers': {
-        'django.db': {
-            'handlers': ['console'],
-            'level': 'ERROR',  # to show queries or not.
-        },
         'django.request': {
-            'handlers': ['mail_admins', 'console'],
+            'handlers': ['mail_admins'],
             'level': 'ERROR',
-            'propagate': True,
+            'propagate': True
         },
-        'raven': {
-            'level': 'DEBUG',
-            'handlers': ['console'],
-            'propagate': False,
-        },
+        'django.security.DisallowedHost': {
+            'level': 'ERROR',
+            'handlers': ['console', 'mail_admins'],
+            'propagate': True
+        }
     }
 }
 
